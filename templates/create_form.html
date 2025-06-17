@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Create Form</h2>
+<form method="post">
+    <label>Form Name: <input type="text" name="form_name"></label><br>
+    <label>Fields (comma separated): <input type="text" name="fields"></label><br>
+    <button type="submit">Create</button>
+</form>
+{% endblock %}
