@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ survey.title }}</h2>
+<form method="post">
+{% for q in root_questions %}
+  <label>{{ q.label }}: <input type="text" name="{{ q.slug }}"></label><br>
+{% endfor %}
+{% for g in groups %}
+  <h3>{{ g.label }}</h3>
+  <div id="group{{ g.id }}">
+    <div class="row">
+    {% for c in children_map[g.id] %}
+      <label>{{ c.label }}: <input type="text" name="g{{ g.id }}_0_{{ c.slug }}"></label>
+    {% endfor %}
+    </div>
+  </div>
+  <button type="button" onclick="addRow({{ g.id }})">Add Row</button>
+{% endfor %}
+  <button type="submit">Submit</button>
+</form>
+<script>
+function addRow(gid) {
+  const container = document.getElementById('group' + gid);
+  const rows = container.getElementsByClassName('row');
+  const idx = rows.length;
+  const template = rows[0].cloneNode(true);
+  for (const input of template.getElementsByTagName('input')) {
+    const parts = input.name.split('_');
+    parts[1] = idx;
+    input.name = parts.join('_');
+    input.value = '';
+  }
+  container.appendChild(template);
+}
+</script>
+{% endblock %}

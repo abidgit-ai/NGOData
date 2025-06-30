@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<p><a href="{{ url_for('create_survey') }}">Create Survey</a></p>
+<ul>
+{% for s in surveys %}
+  <li>{{ s.title }} -
+      <a href="{{ url_for('add_question', survey_id=s.id) }}">Questions</a>
+      <form action="{{ url_for('generate', survey_id=s.id) }}" method="post" style="display:inline;">
+          <button type="submit">Generate Tables</button>
+      </form>
+      <a href="{{ url_for('survey', survey_id=s.id) }}">Open</a>
+  </li>
+{% endfor %}
+</ul>
+{% endblock %}

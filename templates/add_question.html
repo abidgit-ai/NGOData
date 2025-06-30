@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Question to {{ survey.title }}</h2>
+<form method="post">
+    <label>Label: <input type="text" name="label"></label><br>
+    <label>Slug: <input type="text" name="slug"></label><br>
+    <label>Type:
+        <select name="qtype">
+            <option value="text">Text</option>
+            <option value="number">Number</option>
+            <option value="choice">Choice</option>
+            <option value="date">Date</option>
+            <option value="group">Subform Group</option>
+        </select>
+    </label><br>
+    <label>Required: <input type="checkbox" name="required"></label><br>
+    <label>Order: <input type="number" name="order" value="0"></label><br>
+    <label>Parent:
+        <select name="parent_id">
+            <option value="">(none)</option>
+            {% for g in groups %}
+            <option value="{{ g.id }}">{{ g.label }}</option>
+            {% endfor %}
+        </select>
+    </label><br>
+    <button type="submit">Add Question</button>
+</form>
+<h3>Questions</h3>
+<ul>
+{% for q in questions %}
+  <li>{{ q.label }} ({{ q.qtype }}){% if q.parent_id %} - child of {{ q.parent_id }}{% endif %}</li>
+{% endfor %}
+</ul>
+<a href="{{ url_for('index') }}">Back</a>
+{% endblock %}
