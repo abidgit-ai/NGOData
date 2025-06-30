@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <p><a href="{{ url_for('create_survey') }}">Create Survey</a></p>
 <ul>
 {% for s in surveys %}
@@ -12,4 +13,8 @@
   </li>
 {% endfor %}
 </ul>
+=======
+<p>Welcome to NGO Data.</p>
+<p><a href="/create_form">Create Form</a></p>
+
 {% endblock %}
