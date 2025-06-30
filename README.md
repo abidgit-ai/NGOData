@@ -1,4 +1,6 @@
-
+NGOData is a simple survey management application built with Flask. It allows
+users to create surveys with nested subforms and store responses in a SQLite
+database.
 
 ## Setup
 
