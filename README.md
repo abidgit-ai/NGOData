@@ -1,6 +1,4 @@
-# NGOData
 
-This project provides a minimal Flask application for creating custom forms and generating SQL tables automatically. It works with SQLite and should run on Windows with Python installed.
 
 ## Setup
 
@@ -13,4 +11,5 @@ This project provides a minimal Flask application for creating custom forms and 
    python app.py
    ```
 
-Open `http://localhost:5000` in your browser. Use the "Create Form" link to define new forms. Each new form name becomes a new database table with text columns for each field you specify.
+3. Open `http://localhost:5000` in your browser.
+
